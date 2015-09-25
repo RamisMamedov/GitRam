@@ -2,9 +2,13 @@ package List;
 
 import java.util.ArrayList;
 
+import fourwheeled.Bac;
+import fourwheeled.Sedan;
+import fourwheeled.Suv;
 import tcp.TCPClient;
-import twowheeled.*;
-import fourwheeled.*;
+import twowheeled.Bicycle;
+import twowheeled.Bike;
+import twowheeled.Moped;
 
 public class Ran {
 
@@ -17,14 +21,16 @@ public class Ran {
 				client.write("test" + i);
 				try {
 					Thread.sleep(1000);
-				} catch (InterruptedException e) {
+				} catch (InterruptedException e)
+				{
 					e.printStackTrace();
 				}
-			}
-		} finally {
+			} 
+		} 
+		finally {
 			client.close();
 		}
-		ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
+		/*ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
 		classes.add(Bike.class);
 		classes.add(Bicycle.class);
 		classes.add(Moped.class);
@@ -40,7 +46,7 @@ public class Ran {
 		
 	 //classes.get(n);
 	 
-		Object ts = classes.get(n).newInstance();
+		Object ts = classes.get(n).newInstance();*/
 	
 	}
 	

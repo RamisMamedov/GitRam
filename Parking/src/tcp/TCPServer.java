@@ -9,7 +9,7 @@ import java.util.List;
 public class TCPServer {
 	private static volatile TCPServer instance = null;
 	private ServerSocket serverSocket = null;
-	private List<TCPListener> listeners = null;
+	private static List<TCPListener> listeners = null;
 	
 	public static TCPServer getInstance(){
 		if (instance == null)
@@ -26,13 +26,20 @@ public class TCPServer {
 
 	private void recreate() { 
 		try {
-			serverSocket = new ServerSocket(9999);
+			serverSocket = new ServerSocket(5555); 
 			Socket clientSocket = null;
+			
+		
 			while ((clientSocket = serverSocket.accept()) != null) {
+				if(listeners.size()<3){ 
 				final TCPListener listener = new TCPListener(clientSocket); 
 				listeners.add(listener);
-				listener.start();
+				listener.start();}
+				else {
+					clientSocket.close();
+				}
 			}
+	
 		} catch (IOException e) { 
 			System.out.println("Ошибка при чтении сообщения.");
 			e.printStackTrace();

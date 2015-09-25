@@ -18,7 +18,7 @@ public class TCPClient {
 			if (socket != null)
 				socket.close();
 			
-			socket = new Socket("localhost", 9999);
+			socket = new Socket("localhost", 5555);
 			write("test");
 		} catch (Exception e){
 			System.err.println(e);
