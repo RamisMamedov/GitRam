@@ -1,18 +1,20 @@
-package factory;
+package Factory;
 
 import java.util.ArrayList;
-import Car.fourwheeled.Bac;
-import Car.fourwheeled.Sedan;
-import Car.fourwheeled.Suv;
-import Car.tcp.TCPClient;
-import Car.twowheeled.Bicycle;
-import Car.twowheeled.Bike;
-import Car.twowheeled.Moped;
+
+import fourwheeled.Bac;
+import fourwheeled.Sedan;
+import fourwheeled.Suv;
+import tcp.TCPClient;
+import twowheeled.Bicycle;
+import twowheeled.Bike;
+import twowheeled.Moped;
 
 public class Factory {
 	
 	
-	private Object RandCar(Object obj){
+	
+	public Object RandomFactory(Object obj) throws Exception, IllegalAccessException{
 		ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
 		classes.add(Bike.class);
 		classes.add(Bicycle.class);
@@ -22,16 +24,10 @@ public class Factory {
 		classes.add(Bac.class);
 		
 		int ce = classes.size()-1;
-		
 		int n = (int)(Math.random()*ce);		
-		System.out.println(n);
-		
-		
-	 //classes.get(n);
-	 
-		Object ts = classes.get(n).newInstance();
+		obj = classes.get(n).newInstance();
 		return obj;
-		
 	}
+	
 
 }
