@@ -9,6 +9,7 @@ import java.net.Socket;
 public class TCPListener extends Thread{
 	private Socket clientSocket = null;
 	
+	
 	public TCPListener(final Socket pSocket) {
 		clientSocket = pSocket;
 	}

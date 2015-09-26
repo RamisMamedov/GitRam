@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
+import factory.Factory;
+
 public class TCPClient {
 	private Socket socket = null;
 	
@@ -19,13 +21,13 @@ public class TCPClient {
 				socket.close();
 			
 			socket = new Socket("localhost", 5555);
-			write("test");
+			//write("test");
 		} catch (Exception e){
 			System.err.println(e);
 		}
 	}
 	
-	public boolean write(final String pMessage){
+	public boolean write(final Factory factory){
 		if (socket == null || socket.isClosed() || !socket.isConnected())
 			reconnect();
 		OutputStream streamOut = null;
@@ -33,7 +35,7 @@ public class TCPClient {
 		try{
 			streamOut = socket.getOutputStream();
 			writer = new BufferedWriter(new OutputStreamWriter(streamOut));
-			writer.write(pMessage + "\n");
+			writer.write(factory + "\n");
 			writer.flush();
 			return true;
 		} catch (Exception e){

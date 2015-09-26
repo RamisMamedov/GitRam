@@ -1,6 +1,9 @@
-package Factory;
+package factory;
 
 import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import fourwheeled.Bac;
 import fourwheeled.Sedan;
@@ -12,9 +15,7 @@ import twowheeled.Moped;
 
 public class Factory {
 	
-	
-	
-	public Object RandomFactory(Object obj) throws Exception, IllegalAccessException{
+	public String Factory() throws InstantiationException, IllegalAccessException{
 		ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
 		classes.add(Bike.class);
 		classes.add(Bicycle.class);
@@ -25,9 +26,10 @@ public class Factory {
 		
 		int ce = classes.size()-1;
 		int n = (int)(Math.random()*ce);		
-		obj = classes.get(n).newInstance();
-		return obj;
-	}
-	
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(classes.get(n).newInstance());
+		return json;
+			}
 
 }
